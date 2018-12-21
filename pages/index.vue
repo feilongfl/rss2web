@@ -15,7 +15,8 @@
       <b-list-group v-for="item in data.items" :key="item.link">
         <b-list-group-item :href="item.link" class="d-flex justify-content-between align-items-center">
             <b-media>
-              <b-img slot="aside" height="240" width="160" alt="placeholder" :src="item.cover" />
+              <!--<b-img slot="aside" height="240" width="160" alt="placeholder" :src="item.cover" />-->
+              <b-img slot="aside" height="240" width="160" alt="placeholder" :v-lazy="item.cover" />
               <h5 class="mt-0">{{ item.title }}</h5>
               <b-badge v-if="item.category === 'manhuagui'" variant="primary" pill>{{ item.category }}</b-badge>
               <b-badge v-if="item.category === '57comic'" variant="success" pill>{{ item.category }}</b-badge>
