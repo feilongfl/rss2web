@@ -6,6 +6,10 @@
       <b-collapse is-nav id="nav_collapse">
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+          <b-nav-item href="https://github.com/feilongfl/Cimoc">
+            <b-img src="https://camo.githubusercontent.com/69b991d1e0f31d6bb3e984495ca0cdb21ac41d38/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f72656c656173652f6665696c6f6e67666c2f43696d6f632e737667"></b-img>
+          </b-nav-item>
+
           <b-nav-item href="#">{{ feed.pubDate }}</b-nav-item>
           <!--<b-nav-item href="#">{{ data.description }}</b-nav-item>-->
         </b-navbar-nav>
@@ -15,7 +19,8 @@
       <b-list-group v-for="item in data.items" :key="item.link">
         <b-list-group-item :href="item.link" class="d-flex justify-content-between align-items-center">
             <b-media>
-              <b-img slot="aside" height="240" width="160" alt="placeholder" :src="item.cover" />
+              <!--<b-img slot="aside" height="240" width="160" alt="placeholder" :src="item.cover" />-->
+              <b-img slot="aside" height="240" width="160" alt="placeholder" v-lazy="item.cover" />
               <h5 class="mt-0">{{ item.title }}</h5>
               <b-badge v-if="item.category === 'manhuagui'" variant="primary" pill>{{ item.category }}</b-badge>
               <b-badge v-if="item.category === '57comic'" variant="success" pill>{{ item.category }}</b-badge>

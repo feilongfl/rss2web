@@ -33,6 +33,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/vue-lazyload', ssr: false }
   ],
 
   /*
@@ -41,6 +42,8 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    // Doc: https://pwa.nuxtjs.org/setup
+    '@nuxtjs/pwa',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt'
   ],
@@ -51,6 +54,29 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+    /*
+    ** Pwa module configuration
+    */
+  workbox: {
+    runtimeCaching: [
+      {
+        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
+        urlPattern: 'https://cimoc.netlify.com/.*',
+        // Defaults to `networkFirst` if omitted
+        handler: 'cacheFirst',
+        // Defaults to `GET` if omitted
+        method: 'GET'
+      }
+    ]
+  },
+  meta: {
+    // ...
+    nativeUI: true
+  },
+  manifest: {
+    name: 'CRss',
+    lang: 'zh-CN'
+  },
   /*
   ** Build configuration
   */
