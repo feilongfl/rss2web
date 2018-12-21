@@ -1,7 +1,7 @@
 {
-  "name": "rss2web",
+  "name": "crss",
   "version": "1.0.0",
-  "description": "Huginn data output agent json file to Website.",
+  "description": "Show Comic Update.",
   "author": "feilong",
   "private": true,
   "scripts": {
