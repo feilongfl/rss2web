@@ -20,8 +20,8 @@
           <!--<b-nav-item href="#">{{ this.$store.state.pubDate }}</b-nav-item>-->
           <b-nav-item-dropdown text="IPFS Server" right>
             <b-dropdown-item v-on:click="changeIpfsServer('https://feilong.ml/comic.json')">Cloudflare</b-dropdown-item>
-            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.io/ipns/feilong.ml/comic.json')">ipfs.io
-            </b-dropdown-item>
+            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.io/ipns/feilong.ml/comic.json')">ipfs.io</b-dropdown-item>
+            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.f.lan/ipns/feilong.ml/comic.json')">ipfs.f.lan</b-dropdown-item>
           </b-nav-item-dropdown>
           <!--<b-nav-item href="#">{{ data.description }}</b-nav-item>-->
         </b-navbar-nav>
