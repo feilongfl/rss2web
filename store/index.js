@@ -17,7 +17,14 @@ const store = () => new Vuex.Store({
       state.url = url;
     },
     setData(state, data) {
-      state.data = data;
+      // for (index in data){
+      //   data[index].readed = false;
+      // }
+      Object.assign(data, state.data);
+      // state.data = data;
+    },
+    markRead(state, index) {
+      state.data.items[index].readed = true;
     }
   }
 });
