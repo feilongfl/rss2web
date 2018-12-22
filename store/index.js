@@ -20,8 +20,8 @@ const store = () => new Vuex.Store({
       // for (index in data){
       //   data[index].readed = false;
       // }
-      Object.assign(data, state.data);
-      // state.data = data;
+      Object.assign(data.items, state.data.items);
+      state.data = data;
     },
     markRead(state, index) {
       state.data.items[index].readed = true;
