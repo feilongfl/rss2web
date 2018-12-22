@@ -48,7 +48,6 @@
                              :href="item.link"
                              class="d-flex justify-content-between align-items-center">
             <b-media>
-              {{index}}
               <!--<b-img slot="aside" height="240" width="160" alt="placeholder" :src="item.cover" />-->
               <b-img-lazy rounded slot="aside" height="200" width="160" alt="img" blank-src="/icon.png"
                           :src="item.cover"/>
@@ -65,6 +64,7 @@
                 {{ item.pubDate }}
                 <!--{{item.description}}-->
               </p>
+              <p class="rank">#{{index}}</p>
             </b-media>
           </b-list-group-item>
         </div>
@@ -87,9 +87,11 @@
     box-sizing: border-box;
   }
 
-  /*html { width: 100%; height: 100%; font-size: 62.5%; }*/
-  /*body { width: 100%; height: 100%; background: #3530F0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }*/
-
+  .rank {
+    float: right;
+    font-size: 36px;
+    color: #9da0a9;
+  }
 
   /* Loader 1 */
   .loader-1 {

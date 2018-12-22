@@ -17,10 +17,16 @@ const store = () => new Vuex.Store({
       state.url = url;
     },
     setData(state, data) {
-      // for (index in data){
-      //   data[index].readed = false;
-      // }
-      Object.assign(data.items, state.data.items);
+      var readedUrl = state.data.items.filter(
+        (item) => {
+          return item.readed;
+        }
+      ).map((item) => {return item.link});
+      data.items.forEach(
+        (item) => {
+          item.readed = readedUrl.includes(item.link);
+        }
+      );
       state.data = data;
     },
     markRead(state, index) {
