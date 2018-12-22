@@ -45,6 +45,7 @@
       <b-list-group>
         <div v-for="(item, index) in this.$store.state.data.items" :key="index">
           <b-list-group-item v-on:click="markRead(index)"
+                             :href="item.link"
                              class="d-flex justify-content-between align-items-center">
             <b-media>
               {{index}}
