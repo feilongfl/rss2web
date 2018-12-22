@@ -20,8 +20,10 @@
           <!--<b-nav-item href="#">{{ this.$store.state.pubDate }}</b-nav-item>-->
           <b-nav-item-dropdown text="IPFS Server" right>
             <b-dropdown-item v-on:click="changeIpfsServer('https://feilong.ml/comic.json')">Cloudflare</b-dropdown-item>
-            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.io/ipns/feilong.ml/comic.json')">ipfs.io</b-dropdown-item>
-            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.f.lan/ipns/feilong.ml/comic.json')">ipfs.f.lan</b-dropdown-item>
+            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.io/ipns/feilong.ml/comic.json')">ipfs.io
+            </b-dropdown-item>
+            <b-dropdown-item v-on:click="changeIpfsServer('https://ipfs.f.lan/ipns/feilong.ml/comic.json')">ipfs.f.lan
+            </b-dropdown-item>
           </b-nav-item-dropdown>
           <!--<b-nav-item href="#">{{ data.description }}</b-nav-item>-->
         </b-navbar-nav>
@@ -969,7 +971,8 @@
           Level: "info"
         },
         timer: null,
-        loading: false
+        loading: false,
+        uselz: false
       }
     },
     mounted() {
@@ -992,7 +995,13 @@
         this.alertBar._time = time;
         this.alertBar.Level = level;
       },
-      async update() {
+      update(){
+        if(this.uselz)
+          this.updatelz();
+        else
+          this.updateNormal();
+      },
+      async updateNormal() {
         if (this.loading)
           return;
 
@@ -1001,6 +1010,23 @@
           let {data} = await axios.get(this.$store.state.url);
           data.refershDate = Date.now();
           this.$store.commit('setData', data);
+          this.showNoti("Refershed!", 1, "info");
+        } catch (err) {
+          this.showNoti("Network Err!", 3, "danger");
+          console.log(err);
+        } finally {
+          this.loading = false;
+        }
+      },
+      async updatelz() {
+        if (this.loading)
+          return;
+
+        this.loading = true;
+        try {
+          let {data} = await axios.get(this.$store.state.url + ".lz");
+          // data.refershDate = Date.now();
+          this.$store.commit('setDataLZ', data);
           this.showNoti("Refershed!", 1, "info");
         } catch (err) {
           this.showNoti("Network Err!", 3, "danger");
