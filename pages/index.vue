@@ -115,6 +115,11 @@
                 pill>{{ item.category }}
               </b-badge>
               <b-badge
+                v-else-if="item.category === '997700'"
+                variant="info"
+                pill>{{ item.category }}
+              </b-badge>
+              <b-badge
                 v-else
                 variant="secondary"
                 pill>{{ item.category }}
